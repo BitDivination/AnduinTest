@@ -15,3 +15,9 @@ export class GetComments {
 
   constructor() {}
 }
+
+export class UpdateFeedSearchTerm {
+  public static type: string = "[AppState] UpdateFeeSearchTerm";
+
+  constructor(public searchTerm: string) { }
+}

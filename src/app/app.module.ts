@@ -10,14 +10,18 @@ import { AppStateService } from "./state";
 import { GetComments, GetPosts, GetUsers } from "./state/app-state.actions";
 import { FeedContainerComponent, UserContainerComponent, PostContainerComponent } from './containers';
 import { FeedPostComponent } from './components/feed-post/feed-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
 import { MatCardModule } from "@angular/material";
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
 
 export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule
   ];
 
 @NgModule({
@@ -32,6 +36,9 @@ export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] =
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
     NgxsModule.forRoot([AppStateService], { developmentMode: true }),
 
     //Material Imports

@@ -1,3 +1,10 @@
-<ng-container *ngFor="let post of feed$ | async">
-  <app-feed-post [feedPost]="post"></app-feed-post>
-</ng-container>
+<div class="feed-header">
+  <h1>Feed</h1>
+
+  <div class="search-container">
+    <label>Search: </label>
+    <input [formControl]="searchInput">
+  </div>
+</div>
+
+<app-feed-post *ngFor="let post of feed$ | async" [feedPost]="post"></app-feed-post>

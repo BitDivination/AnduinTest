@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Action, createSelector, Selector, State, StateContext } from "@ngxs/store";
+import { Action, createSelector, Selector, SelectorOptions, State, StateContext } from '@ngxs/store';
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 import { Comments, Posts, User, Users } from "../models";
 import { PostsService, UserService } from "../services";
-import { GetComments, GetPosts, GetUsers } from "./app-state.actions";
+import { GetComments, GetPosts, GetUsers, UpdateFeedSearchTerm } from './app-state.actions';
 import { AppStateModel, DEFAULT_APP_STATE } from "./app-state.model";
 
 /**
@@ -41,6 +41,22 @@ export class AppStateService {
   @Selector()
   static posts(state: AppStateModel): Posts {
     return state.posts;
+  }
+
+  @SelectorOptions({ injectContainerState: false })
+  @Selector([AppStateService.posts, AppStateService.getFeedSearchTerm])
+  static getFilteredPosts(posts: Posts, searchTerm: string): Posts {
+    return posts.filter(({ title, body }) => !searchTerm || title === searchTerm || body === searchTerm);
+  }
+
+  /**
+   * Selector to get the feed search term
+   * @param feedSearchTerm Current state
+   * @returns Feed search term
+   */
+  @Selector()
+  static getFeedSearchTerm({ feedSearchTerm }: AppStateModel): string {
+    return feedSearchTerm;
   }
 
   /**
@@ -113,5 +129,15 @@ export class AppStateService {
     return this.postService.getComments().pipe(
         tap(response => context.patchState({ comments: response }))
       );
+  }
+
+  /**
+   * Action handler for updating the feed search term from the container (user input)
+   * @param patchState
+   * @param feedSearchTerm
+   */
+  @Action(UpdateFeedSearchTerm)
+  updateFeedSearchTerm({ patchState }: StateContext<AppStateModel>, { searchTerm: feedSearchTerm }: UpdateFeedSearchTerm): void {
+    patchState({ feedSearchTerm });
   }
 }
