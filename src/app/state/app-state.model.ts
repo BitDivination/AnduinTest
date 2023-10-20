@@ -1,4 +1,4 @@
-import { Comments, Posts, Users } from "../models";
+import { Comments, Posts, Users } from '../models';
 
 export interface AppStateModel {
   users: Users;
@@ -11,5 +11,5 @@ export const DEFAULT_APP_STATE: AppStateModel = {
     users: [],
     posts: [],
     comments: [],
-    feedSearchTerm: ""
+    feedSearchTerm: ''
   };

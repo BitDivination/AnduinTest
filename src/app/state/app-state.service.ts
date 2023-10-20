@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Action, createSelector, Selector, SelectorOptions, State, StateContext } from '@ngxs/store';
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
-import { Comments, Posts, User, Users } from "../models";
-import { PostsService, UserService } from "../services";
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Comments, Posts, User, Users } from '../models';
+import { PostsService, UserService } from '../services';
 import { GetComments, GetPosts, GetUsers, UpdateFeedSearchTerm } from './app-state.actions';
-import { AppStateModel, DEFAULT_APP_STATE } from "./app-state.model";
+import { AppStateModel, DEFAULT_APP_STATE } from './app-state.model';
 
 /**
  * Default application state, handle all persistent data like users and their associated posts and comments
  */
 @State({
-    name: "appState",
+    name: 'appState',
     defaults: DEFAULT_APP_STATE
   })
 @Injectable({
@@ -133,8 +133,6 @@ export class AppStateService {
 
   /**
    * Action handler for updating the feed search term from the container (user input)
-   * @param patchState
-   * @param feedSearchTerm
    */
   @Action(UpdateFeedSearchTerm)
   updateFeedSearchTerm({ patchState }: StateContext<AppStateModel>, { searchTerm: feedSearchTerm }: UpdateFeedSearchTerm): void {

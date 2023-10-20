@@ -3,18 +3,18 @@ import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
-import { API_BASE_PROVIDER } from "./services";
-import { NgxsModule, Store } from "@ngxs/store";
-import { AppStateService } from "./state";
-import { GetComments, GetPosts, GetUsers } from "./state/app-state.actions";
+import { HttpClientModule } from '@angular/common/http';
+import { API_BASE_PROVIDER } from './services';
+import { NgxsModule, Store } from '@ngxs/store';
+import { AppStateService } from './state';
+import { GetComments, GetPosts, GetUsers } from './state/app-state.actions';
 import { FeedContainerComponent, UserContainerComponent, PostContainerComponent } from './containers';
 import { FeedPostComponent } from './components/feed-post/feed-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
-import { MatCardModule } from "@angular/material/card";
+import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 
@@ -41,7 +41,7 @@ export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] =
     BrowserAnimationsModule,
     NgxsModule.forRoot([AppStateService], { developmentMode: true }),
 
-    //Material Imports
+    // Material Imports
     ...MATERIAL_IMPORTS
   ],
   providers: [

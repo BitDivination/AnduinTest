@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { Comments, Posts } from "./../../models";
-import { API_BASE } from "./../constants";
+import { Observable } from 'rxjs';
+import { Comments, Posts } from './../../models';
+import { API_BASE } from './../constants';
 
 /**
  * API Service for the Posts Domain. Handles all of the different post based objects and communications.

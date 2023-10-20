@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from "@angular/router";
-import { Store } from "@ngxs/store";
-import { Observable } from "rxjs";
-import { filter, map, switchMap, tap } from "rxjs/operators";
-import { Posts, User } from "src/app/models";
-import { AppStateService } from "src/app/state";
+import { ActivatedRoute, Route } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { Posts, User } from 'src/app/models';
+import { AppStateService } from 'src/app/state';
 
 /**
  * Container component for a user. Outlines user demographics as well as their recent posts
@@ -34,6 +34,6 @@ export class UserContainerComponent {
 
 }
 
-export const USER_PATH: string = "user";
-export const USER_PATH_VAR: string = "userId";
+export const USER_PATH = 'user';
+export const USER_PATH_VAR = 'userId';
 export const USER_ROUTE: Route = { path: `${USER_PATH}/:${USER_PATH_VAR}`, component: UserContainerComponent };

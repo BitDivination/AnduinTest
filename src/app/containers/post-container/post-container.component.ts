@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from "@angular/router";
+import { ActivatedRoute, Route } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 /**
  * Container component for a list of posts, intended to be the detail view of a single post for a user
@@ -12,13 +14,14 @@ import { Route } from "@angular/router";
 })
 export class PostContainerComponent implements OnInit {
 
-  constructor() { }
+	postId$: Observable<number> = this.activatedRoute.paramMap.pipe(
+		map(paramMap => +paramMap.get('postId')),
+	);
+
+  constructor(
+      private readonly activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
   }
-
 }
-
-export const POST_PATH: string = "post";
-export const POST_PATH_VAR: string = "postId";
-export const POST_ROUTE: Route = { path: `${POST_PATH}/:${POST_PATH_VAR}`, component: PostContainerComponent };

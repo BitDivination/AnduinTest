@@ -1,4 +1,4 @@
-import { Post, User } from ".";
+import { Post, User } from '.';
 
 export interface FeedPost {
   post: Post;

@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Route } from "@angular/router";
-import { Store } from "@ngxs/store";
+import { Route } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, first, map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { FeedPost, Post, User } from "src/app/models";
-import { AppStateService } from "src/app/state";
+import { FeedPost, Post, User } from 'src/app/models';
+import { AppStateService } from 'src/app/state';
 import { FormControl } from '@angular/forms';
 import { UpdateFeedSearchTerm } from '../../state/app-state.actions';
 
-const FEED_LENGTH: number = 10;
+const FEED_LENGTH = 10;
 
 /**
  * Container component that shows a list of feed posts
@@ -66,5 +66,5 @@ export class FeedContainerComponent implements OnInit, OnDestroy {
     }
 }
 
-export const FEED_PATH: string = "feed";
+export const FEED_PATH = 'feed';
 export const FEED_ROUTE: Route = { path: FEED_PATH, component: FeedContainerComponent };
