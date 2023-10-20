@@ -5,7 +5,6 @@ import { Observable } from "rxjs";
 import { filter, map, switchMap, tap } from "rxjs/operators";
 import { Posts, User } from "src/app/models";
 import { AppStateService } from "src/app/state";
-import { isNumber } from "util";
 
 /**
  * Container component for a user. Outlines user demographics as well as their recent posts
@@ -20,7 +19,7 @@ export class UserContainerComponent {
 
   user$: Observable<User> = this.route.paramMap.pipe(
       map(paramMap => paramMap.get(USER_PATH_VAR)),
-      filter(userId => isNumber(+userId)),
+      filter(userId => !isNaN(+userId)),
       switchMap(userId => this.store.select(AppStateService.userByUserId(+userId))),
     );
 
