@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FeedContainerComponent } from '../feed-container/feed-container.component';
 
 /**
  * Container component for a list of posts, intended to be the detail view of a single post for a user
@@ -22,6 +23,9 @@ export class PostContainerComponent implements OnInit {
       private readonly activatedRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }
+
+export const POST_PATH = 'post';
+export const POST_PATH_PARAM = 'postId';
+export const POST_ROUTE: Route = { path: `${POST_PATH}/:${POST_PATH_PARAM}`, component: PostContainerComponent };

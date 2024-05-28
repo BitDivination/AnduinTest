@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { USER_PATH } from 'src/app/containers';
+import { POST_PATH, USER_PATH } from 'src/app/containers';
 import { FeedPost } from 'src/app/models';
 
 /**
@@ -13,6 +13,7 @@ import { FeedPost } from 'src/app/models';
 })
 export class FeedPostComponent implements OnInit {
   userPath = `/${USER_PATH}`;
+	postPath = `/${POST_PATH}`;
 
   private _feedPost$: BehaviorSubject<FeedPost> = new BehaviorSubject<FeedPost>(undefined);
   feedPost$: Observable<FeedPost> = this._feedPost$.asObservable();
@@ -25,5 +26,4 @@ export class FeedPostComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-
 }
