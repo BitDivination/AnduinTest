@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comments, Posts } from './../../models';
 import { API_BASE } from './../constants';
+import { delay } from 'rxjs/operators';
 
 /**
  * API Service for the Posts Domain. Handles all of the different post based objects and communications.
@@ -21,7 +22,9 @@ export class PostsService {
    * @returns Total list of posts for all users
    */
   getPosts(): Observable<Posts> {
-    return this.http.get<Posts>(`${this.apiBase}/posts`);
+    return this.http.get<Posts>(`${this.apiBase}/posts`).pipe(
+			delay(Math.random() * 3000),
+    );
   }
 
   /**

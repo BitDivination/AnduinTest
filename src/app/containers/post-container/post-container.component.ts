@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FeedContainerComponent } from '../feed-container/feed-container.component';
 
 /**
  * Container component for a list of posts, intended to be the detail view of a single post for a user

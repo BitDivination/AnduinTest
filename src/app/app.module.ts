@@ -13,6 +13,8 @@ import { FeedPostComponent } from './components/feed-post/feed-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { SharedModule } from './shared/shared.module';
+
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -40,6 +42,7 @@ export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] =
     FormsModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([AppStateService], { developmentMode: true }),
+	  SharedModule,
 
     // Material Imports
     ...MATERIAL_IMPORTS
