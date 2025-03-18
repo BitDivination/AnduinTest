@@ -12,18 +12,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './post-container.component.html',
   styleUrls: ['./post-container.component.scss']
 })
-export class PostContainerComponent implements OnInit {
-
-	postId$: Observable<number> = this.activatedRoute.paramMap.pipe(
-		map(paramMap => +paramMap.get('postId')),
-	);
-
-  constructor(
-      private readonly activatedRoute: ActivatedRoute,
-  ) { }
-
-  ngOnInit() { }
-}
+export class PostContainerComponent { }
 
 export const POST_PATH = 'post';
 export const POST_PATH_PARAM = 'postId';
