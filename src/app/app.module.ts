@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { TrashComponent } from './components/trash/trash.component';
 
 export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] = [
     MatCardModule,
@@ -32,7 +33,8 @@ export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] =
     FeedContainerComponent,
     UserContainerComponent,
     PostContainerComponent,
-    FeedPostComponent
+    FeedPostComponent,
+    TrashComponent
   ],
   imports: [
     BrowserModule,
