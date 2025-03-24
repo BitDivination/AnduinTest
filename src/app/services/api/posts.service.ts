@@ -5,6 +5,18 @@ import { Comments, Posts } from './../../models';
 import { API_BASE } from './../constants';
 import { delay } from 'rxjs/operators';
 
+interface PostPictureContent {
+	id: number;
+	url: string;
+	body: string;
+}
+
+interface PostAdvertisementContent {
+	id: number;
+	body: string;
+	adTags: string[];
+}
+
 const EXAMPLE_USER_POST = {
 	id: 1,
 	user: {
@@ -12,12 +24,12 @@ const EXAMPLE_USER_POST = {
 		userName: 'Anonymous'
 	},
 	title: 'This is TOTALLY a post',
-	body: 'Like, I cannot even recount to you the legitness of this post',
+	content: 'Like, I cannot even recount to you the legitness of this post',
 };
 const EXAMPLE_SYSTEM_POST = {
 	id: 2,
 	title: 'WHAT IS UP, MY FELLOW YOUTHS?',
-	body: 'YOU ARE SO OHIO, MY DUDES',
+	content: 'YOU ARE SO OHIO, MY DUDES',
 	communicationType: 'ADVERTISEMENT',
 	system: {
 		id: 1,
