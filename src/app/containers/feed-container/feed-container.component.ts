@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, first, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { FeedPost, Post, User } from 'src/app/models';
 import { AppStateService } from 'src/app/state';
-import { FormControl } from '@angular/forms';
+import { FormControl, UntypedFormControl } from '@angular/forms';
 import { UpdateFeedSearchTerm } from '../../state/app-state.actions';
 
 const FEED_LENGTH = 10;
@@ -14,16 +14,17 @@ const FEED_LENGTH = 10;
  * Container component that shows a list of feed posts
  */
 @Component({
-  selector: 'app-feed-container',
-  templateUrl: './feed-container.component.html',
-  styleUrls: ['./feed-container.component.scss']
+    selector: 'app-feed-container',
+    templateUrl: './feed-container.component.html',
+    styleUrls: ['./feed-container.component.scss'],
+    standalone: false
 })
 export class FeedContainerComponent implements OnInit, OnDestroy {
 
     private _unsubscribe$: Subject<void> = new Subject();
 
-    searchInput: FormControl = new FormControl('');
-    searchInputChange$: Observable<string> = this.searchInput.valueChanges.pipe(
+    searchInput: FormControl<string> = new FormControl<string>('');
+    searchInputChange$ = this.searchInput.valueChanges.pipe(
         debounceTime(333),
         switchMap(searchTerm => this.store.dispatch(new UpdateFeedSearchTerm(searchTerm))),
         takeUntil(this._unsubscribe$)

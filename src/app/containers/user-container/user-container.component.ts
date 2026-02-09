@@ -11,9 +11,10 @@ import { AppStateService } from 'src/app/state';
  */
 
 @Component({
-  selector: 'app-user-container',
-  templateUrl: './user-container.component.html',
-  styleUrls: ['./user-container.component.scss']
+    selector: 'app-user-container',
+    templateUrl: './user-container.component.html',
+    styleUrls: ['./user-container.component.scss'],
+    standalone: false
 })
 export class UserContainerComponent {
 

@@ -3,7 +3,7 @@ import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { API_BASE_PROVIDER } from './services';
 import { NgxsModule, Store } from '@ngxs/store';
 import { AppStateService } from './state';
@@ -27,30 +27,27 @@ export const MATERIAL_IMPORTS: (any[] | Type<any> | ModuleWithProviders<{}>)[] =
   ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeedContainerComponent,
-    UserContainerComponent,
-    PostContainerComponent,
-    FeedPostComponent
+	declarations: [
+	  AppComponent,
+	  FeedContainerComponent,
+	  UserContainerComponent,
+	  PostContainerComponent,
+	  FeedPostComponent
   ],
-  imports: [
-    BrowserModule,
+  bootstrap: [AppComponent],
+	imports: [
+		BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([AppStateService], { developmentMode: true }),
-	  SharedModule,
-
+    SharedModule,
     // Material Imports
-    ...MATERIAL_IMPORTS
-  ],
-  providers: [
-    API_BASE_PROVIDER
-  ],
-  bootstrap: [AppComponent]
+    ...MATERIAL_IMPORTS], providers: [
+    API_BASE_PROVIDER,
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {
 

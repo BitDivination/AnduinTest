@@ -7,9 +7,10 @@ import { FeedPost } from 'src/app/models';
  * Component for a single post that shows up in a feed
  */
 @Component({
-  selector: 'app-feed-post',
-  templateUrl: './feed-post.component.html',
-  styleUrls: ['./feed-post.component.scss']
+    selector: 'app-feed-post',
+    templateUrl: './feed-post.component.html',
+    styleUrls: ['./feed-post.component.scss'],
+    standalone: false
 })
 export class FeedPostComponent implements OnInit {
   userPath = `/${USER_PATH}`;

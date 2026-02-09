@@ -15,12 +15,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/SampleProject",
+            "outputPath": {
+              "base": "dist/SampleProject"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -30,7 +33,8 @@
             "styles": [
               "src/app/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -46,8 +50,6 @@
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -62,9 +64,7 @@
               ]
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SampleProject:build:development"
+            "buildTarget": "SampleProject:build:development"
           },
           "configurations": {
             "development": {
-              "browserTarget": "SampleProject:build:development"
+              "buildTarget": "SampleProject:build:development"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SampleProject:build"
+            "buildTarget": "SampleProject:build"
           }
         },
         "test": {
@@ -131,6 +131,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "SampleProject"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

@@ -8,9 +8,10 @@ import { map } from 'rxjs/operators';
  * TODO :: Implementation
  */
 @Component({
-  selector: 'app-post-container',
-  templateUrl: './post-container.component.html',
-  styleUrls: ['./post-container.component.scss']
+    selector: 'app-post-container',
+    templateUrl: './post-container.component.html',
+    styleUrls: ['./post-container.component.scss'],
+    standalone: false
 })
 export class PostContainerComponent { }
 
